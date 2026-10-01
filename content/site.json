@@ -1,0 +1,21 @@
+{
+  "prototype": {
+    "name": "Guias",
+    "version": "V1.0.0",
+    "updatedAt": "2026-10-01"
+  },
+  "site": {
+    "locale": "pt-PT",
+    "reviewOrigin": "https://lbc-valentim.github.io",
+    "basePath": "/guias.dados.gov.pt",
+    "guidesPath": "/Guias-do-utilizador"
+  },
+  "author": {
+    "name": "Valentim Pinto",
+    "role": "Concepção funcional e editorial",
+    "linkedin": "https://www.linkedin.com/in/valentimmarcelino/",
+    "logo_web": "/assets/brand/valentim-pinto-vp.jpg",
+    "logo_file": "assets/brand/valentim-pinto-vp.jpg",
+    "logo_alt": "VP, marca pessoal de Valentim Pinto"
+  }
+}

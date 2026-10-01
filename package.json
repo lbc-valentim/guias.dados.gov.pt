@@ -1,0 +1,41 @@
+{
+  "name": "guias-dados-gov-pt",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "content:validate": "tsx scripts/v1/validate-content.ts",
+    "content:derive": "tsx scripts/v1/build-derived.ts",
+    "content:source:check": "tsx scripts/v1/check-content-source.ts",
+    "squidex:import:dry-run": "tsx scripts/v1/squidex-import-dry-run.ts",
+    "squidex:import:preflight": "tsx scripts/v1/squidex-import-preflight.ts",
+    "squidex:import:safety-check": "tsx scripts/v1/squidex-import-safety-check.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run content:validate && npm run routes:check && npm run content:derive && next build",
+    "routes:check": "tsx scripts/v1/check-route-contract.ts",
+    "test:squidex": "tsx tests/unit/squidex-mapper.test.ts && tsx tests/unit/squidex-if-match.test.ts && tsx tests/integration/squidex-source.test.ts && tsx tests/integration/squidex-import-readiness.test.ts && tsx tests/integration/squidex-import-safety.test.ts && tsx tests/integration/squidex-import-concurrency.test.ts",
+    "test:squidex:live": "tsx tests/integration/squidex-live.test.ts",
+    "test:a11y": "playwright test tests/e2e/accessibility.spec.ts",
+    "test:site:prepare": "node scripts/v1/prepare-test-site.mjs",
+    "test:ux": "npm run test:site:prepare && playwright test tests/e2e/ux-contract.spec.ts"
+  },
+  "dependencies": {
+    "@ama-pt/agora-design-system": "4.0.1",
+    "next": "16.3.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "20.19.17",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "postcss": "8.5.28",
+    "tailwindcss": "4.3.3",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

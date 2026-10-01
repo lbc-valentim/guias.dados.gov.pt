@@ -1,0 +1,83 @@
+name: Publicar v1 no GitHub Pages
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: pages-v1-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build static export
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci --no-audit --no-fund
+
+      - name: Preparar dependências PDF
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-inter libpango-1.0-0 libpangoft2-1.0-0
+          python -m pip install --upgrade pip
+          python -m pip install "weasyprint==68.0" "pypdf==5.9.0" "qrcode[pil]"
+
+      - name: Gerar e validar 15 PDFs da fonte única
+        run: bash scripts/v1/build-pdfs.sh
+
+      - name: Gerar static export v1
+        env:
+          NEXT_PUBLIC_BASE_PATH: /guias.dados.gov.pt
+        run: npm run build
+
+      - name: Validar CSS Ágora 4 e Tailwind 4
+        run: npx tsx scripts/v1/check-tailwind-output.ts
+
+      - name: Validar artefacto para GitHub Pages
+        run: |
+          test -f out/index.html
+          test -f out/Guias-do-utilizador/index.html
+          test -f out/search-index.json
+          test -f out/sitemap.xml
+          test "$(find out/assets/pdf -name '*.pdf' | wc -l)" -eq 15
+          count=$(find out/Guias-do-utilizador -name index.html | wc -l)
+          test "$count" -eq 119
+          echo "Artefacto Pages validado: $count rotas dos Guias e 15 PDFs."
+
+      - name: Publicar artefacto de Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    name: Deploy GitHub Pages
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

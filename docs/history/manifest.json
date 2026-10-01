@@ -1,0 +1,39 @@
+{
+  "source": "https://github.com/Timmarcelino/Guias_dados.gov.pt",
+  "commit": "c4ba678dbc7f466b8603d56263840cc4ff70c225",
+  "commits": 256,
+  "bytes": 10577260,
+  "sha256": "b0599ea22cc2009750fcb2bd22acff660b405caafeb5d6d8d61c6b6cef2b3895",
+  "parts": [
+    {
+      "file": "source-main-2026-10-01.bundle.part-01",
+      "bytes": 2000000,
+      "sha256": "5166a4834622085d8ecfc75e50519cbd2b137938dfc4bffb045a9a261449eebe"
+    },
+    {
+      "file": "source-main-2026-10-01.bundle.part-02",
+      "bytes": 2000000,
+      "sha256": "b1cbafc607439227c6def59b764d8472a535b9bed439f841bbd76dd48eb53070"
+    },
+    {
+      "file": "source-main-2026-10-01.bundle.part-03",
+      "bytes": 2000000,
+      "sha256": "92104203e5ad1111d72e9d706207106f67c09a1cd0d35ad884618ce786a12b66"
+    },
+    {
+      "file": "source-main-2026-10-01.bundle.part-04",
+      "bytes": 2000000,
+      "sha256": "cec9d9834ba3d6d5bc437bef71ebfdbfa4ad1535b010e955d15a46a50ae276a3"
+    },
+    {
+      "file": "source-main-2026-10-01.bundle.part-05",
+      "bytes": 2000000,
+      "sha256": "170c5acd994b5174e19f3cb54210e42595b955295fa166c1964eac26f881bb84"
+    },
+    {
+      "file": "source-main-2026-10-01.bundle.part-06",
+      "bytes": 577260,
+      "sha256": "b0db03ee1f2bf67e85a16d24c2469cd566475a01d33cb0e45b14222277d16d5b"
+    }
+  ]
+}

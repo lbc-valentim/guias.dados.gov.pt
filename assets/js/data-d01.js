@@ -1,15 +1,15 @@
 // Conteúdo editorial do guia D01.
-// Este guia descreve o comportamento alvo validado em TST para autenticação e acesso à conta.
+// Este guia descreve o comportamento editorial actualmente consolidado para autenticação e acesso à conta.
 
 export const d01Guide = {
   code: "D01",
   title: "Autenticação e acesso à conta",
   intro: "Inicie sessão no dados.gov.pt, conclua o primeiro acesso quando necessário e recupere o acesso à sua conta.",
-  audience: "Para utilizadores que precisam de iniciar sessão ou recuperar o acesso. O guia reflecte o comportamento alvo validado em TST e não antecipa a futura descontinuação do login por email e palavra-passe.",
+  audience: "Para utilizadores que precisam de iniciar sessão ou recuperar o acesso. O portal apresenta actualmente CMD, eIDAS e E-mail e palavra-passe; este último destina-se a utilizadores antigos e pode exigir migração da conta quando o portal assim o indicar.",
   fichas: [
     {
       title: "Iniciar sessão com email e palavra-passe",
-      intro: "Utilize as credenciais da sua conta quando pretende aceder pelo método tradicional.",
+      intro: "Utilize este método apenas se já possui uma conta antiga com email e palavra-passe.",
       roles: "Utilizador com conta e credenciais válidas",
       steps: [
         "Abra a página Autenticação do dados.gov.pt.",
@@ -19,7 +19,7 @@ export const d01Guide = {
         "Confirme que regressa ao portal com a sessão iniciada."
       ],
       example: "Uma utilizadora que já tem conta introduz o email e a palavra-passe e entra no portal para gerir os seus conteúdos.",
-      tip: "O acesso por email e palavra-passe continua disponível nesta versão. Não interprete mensagens sobre evolução da autenticação como indicação de que este método já foi desactivado.",
+      tip: "O acesso por email e palavra-passe destina-se a contas que ainda utilizam este método. Se o portal apresentar um percurso de migração ou associação, siga as instruções apresentadas.",
       table: null,
       media: "Captura da página Autenticação com o separador Email e palavra-passe, usando dados de demonstração.",
       next: "Iniciar sessão com Chave Móvel Digital"
@@ -56,24 +56,23 @@ export const d01Guide = {
       tip: "No primeiro acesso por eIDAS pode ser necessário indicar e confirmar um endereço de email no dados.gov.pt.",
       table: null,
       media: "Sequência do acesso eIDAS com um país de demonstração e sem dados de identidade reais.",
-      next: "Concluir o primeiro acesso e confirmar o email"
+      next: "Concluir o primeiro acesso quando solicitado"
     },
     {
-      title: "Concluir o primeiro acesso e confirmar o email",
-      intro: "Quando o portal precisa de completar o registo, confirme um endereço de email válido antes de continuar.",
-      roles: "Utilizador autenticado por CMD ou eIDAS com conclusão de registo pendente",
+      title: "Concluir o primeiro acesso quando solicitado",
+      intro: "Quando o portal apresenta passos adicionais depois da autenticação, siga apenas o percurso e as instruções mostradas no ecrã.",
+      roles: "Utilizador autenticado por CMD ou eIDAS com passos adicionais de registo ou associação apresentados pelo portal",
       steps: [
-        "No ecrã de conclusão do registo, reveja o endereço apresentado ou introduza o email que pretende utilizar.",
-        "No acesso por CMD, o campo pode surgir pré-preenchido quando o endereço é recebido do serviço de identidade; pode alterá-lo antes de continuar.",
-        "No acesso por eIDAS, indique um endereço de email quando o campo estiver vazio.",
-        "Submeta o endereço e consulte a caixa de correio indicada.",
-        "Siga as instruções recebidas por email para confirmar o endereço ou concluir a associação aplicável.",
-        "Depois da confirmação, regresse ao dados.gov.pt e confirme que consegue continuar com a sua conta."
+        "Depois de concluir a autenticação por CMD ou eIDAS, verifique se o dados.gov.pt apresenta algum passo adicional.",
+        "Se o portal solicitar um endereço de email, confirme ou indique o endereço pretendido no campo apresentado.",
+        "Consulte a mensagem enviada para esse endereço e siga a ligação apresentada, quando aplicável.",
+        "Conclua o passo de validação exactamente pelo método apresentado no portal.",
+        "Depois da conclusão, confirme que regressa ao dados.gov.pt e consegue continuar com a sua conta."
       ],
-      example: "No primeiro acesso por eIDAS, uma utilizadora indica o seu email, recebe a mensagem de validação e conclui o processo através da ligação recebida.",
-      tip: "Por razões de segurança, o ecrã não revela se o endereço já está associado a outra conta. Siga sempre as instruções enviadas para a caixa de correio indicada.",
+      example: "Depois de autenticar por CMD ou eIDAS, um utilizador segue os passos adicionais apresentados pelo portal para concluir ou associar a conta.",
+      tip: "O mecanismo de confirmação pode evoluir. Não partilhe códigos, links, palavras-passe ou outros segredos fora do percurso oficial apresentado pelo dados.gov.pt.",
       table: null,
-      media: "Captura do ecrã de conclusão de registo e exemplo de confirmação, sem mostrar endereços ou tokens reais.",
+      media: "Captura dos passos adicionais apresentados pelo portal após a autenticação, sem mostrar endereços, códigos, links de confirmação ou outros dados reais.",
       next: "Recuperar a palavra-passe"
     },
     {
@@ -101,11 +100,11 @@ export const d01Guide = {
         "Confirme qual o método de autenticação que está a utilizar: email e palavra-passe, Chave Móvel Digital ou Autenticação Europeia.",
         "Se utiliza email e palavra-passe e não se recorda da credencial, tente a recuperação antes de repetir várias vezes o login.",
         "Se o processo CMD ou eIDAS for interrompido, volte à página Autenticação e reinicie o percurso pelo mesmo método.",
-        "Se o portal pedir a conclusão do registo, termine a confirmação do email antes de tentar aceder novamente às funcionalidades da conta.",
+        "Se o portal apresentar um passo adicional de conclusão, migração ou associação da conta, conclua esse percurso antes de voltar a tentar.",
         "Se a dificuldade persistir, abra Ajuda e contactos e indique o método utilizado, a página, o momento aproximado e a mensagem apresentada, sem incluir palavras-passe, códigos, tokens ou outros segredos."
       ],
       example: "Uma utilizadora regressa do Autenticação.gov mas não consegue concluir o acesso. Regista o método utilizado e a mensagem apresentada e envia esses elementos através de Ajuda e contactos.",
-      tip: "Não crie uma segunda conta apenas para contornar uma dificuldade de autenticação. O princípio funcional em evolução é manter uma única conta por pessoa, embora os mecanismos de consolidação ainda não façam parte deste guia.",
+      tip: "Não crie uma segunda conta para contornar uma dificuldade de autenticação. Se o portal indicar que é necessária migração ou associação de conta, utilize apenas o percurso oficial apresentado.",
       table: null,
       media: "Exemplo de informação útil para suporte, sem credenciais, tokens ou dados pessoais desnecessários.",
       next: "Ajuda e contactos"

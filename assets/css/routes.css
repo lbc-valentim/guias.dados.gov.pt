@@ -1,0 +1,18 @@
+#dados-guides-review a.dg-choice,#dados-guides-review a.dg-primary{text-decoration:none}
+#dados-guides-review a.dg-nav-item,#dados-guides-review a.dg-all{display:block;text-decoration:none}
+#dados-guides-review .dg-breadcrumb ol{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0;padding:0}
+#dados-guides-review .dg-breadcrumb li+li:before{content:'/';margin-right:.4rem}
+#dados-guides-review .dg-breadcrumb a{color:inherit;text-decoration:underline}
+#dados-guides-review .dg-search{margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;max-width:720px;padding:16px;gap:8px;min-width:0}
+#dados-guides-review .dg-search label{grid-column:1/-1}
+#dados-guides-review .dg-search input{min-width:0;width:100%}
+@media(max-width:420px){#dados-guides-review .dg-search{grid-template-columns:minmax(0,1fr)}}
+#dados-guides-review .dg-bottom{flex-wrap:wrap}
+#dados-guides-review .dg-bottom a{max-width:100%;overflow-wrap:anywhere}
+.skip-link{position:absolute;top:0;left:0;transform:translateY(-120%);padding:1rem;background:white;z-index:10000}
+.skip-link:focus{transform:none}
+a:focus-visible,select:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #0050b9;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+#dados-guides-review .dg-body--single{display:block}
+#dados-guides-review .dg-body--single main{min-height:420px}

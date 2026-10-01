@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "guides": {
+    "D06": {
+      "status": "not-currently-available",
+      "label": "Ainda não disponível no portal público",
+      "message": "Nas superfícies públicas verificadas do dados.gov.pt, o Explorador de dados ainda não está exposto como percurso utilizável. Este guia mantém o conteúdo funcional preparado para a evolução futura e não deve ser tratado como instrução operacional actual.",
+      "verifiedAt": "2026-09-29"
+    },
+    "D07": {
+      "status": "not-currently-available",
+      "label": "Ainda não disponível no portal público",
+      "message": "Nas superfícies públicas verificadas do dados.gov.pt, o Validador de Dados ainda não está disponível como percurso utilizável. Este guia mantém o conteúdo funcional preparado a partir da especificação e não deve ser tratado como instrução operacional actual.",
+      "verifiedAt": "2026-09-29"
+    },
+    "CM": {
+      "status": "not-currently-available",
+      "label": "Ainda não disponível no portal público",
+      "message": "Nas superfícies públicas verificadas do dados.gov.pt, o Catálogo de Modelos ainda não está disponível como percurso utilizável. Este guia mantém o conteúdo funcional preparado a partir da especificação e não deve ser tratado como instrução operacional actual.",
+      "verifiedAt": "2026-09-29"
+    }
+  }
+}

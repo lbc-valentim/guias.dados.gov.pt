@@ -1,0 +1,145 @@
+name: Gerar PDFs dos Guias
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "content/guides.json"
+      - "content/site.json"
+      - "assets/brand/**"
+      - "scripts/generate_pdf_guides.py"
+      - ".github/workflows/guides-pdf.yml"
+  push:
+    branches:
+      - main
+      - feature/footer-autoria
+    paths:
+      - "content/guides.json"
+      - "content/site.json"
+      - "assets/brand/**"
+      - "scripts/generate_pdf_guides.py"
+      - ".github/workflows/guides-pdf.yml"
+
+permissions:
+  contents: read
+
+# Valida a colecção PDF por branch sem efectuar commits automáticos. A ref faz parte do grupo para
+# permitir que main e branches de evolução sejam validadas de forma independente.
+concurrency:
+  group: guides-pdf-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  generate-pdfs:
+    if: github.ref_name != 'feature/v1-single-source-agora'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout da branch actual
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Preparar dependências
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-inter libpango-1.0-0 libpangoft2-1.0-0
+          python -m pip install --upgrade pip
+          python -m pip install "weasyprint==68.0" "pypdf==5.9.0" "qrcode[pil]"
+
+      - name: Gerar colecção PDF
+        run: |
+          rm -rf .build/pdf
+          mkdir -p .build
+          python scripts/generate_pdf_guides.py > .build/generator-output.json
+
+      - name: Preservar PDFs versionados para comparação semântica
+        run: |
+          rm -rf .build/pdf-versioned
+          mkdir -p .build/pdf-versioned
+          cp assets/pdf/*.pdf .build/pdf-versioned/
+      - name: Instalar PDFs nos caminhos públicos
+        run: |
+          rm -f assets/pdf/*.pdf
+          for f in .build/pdf/*/dados-gov-pt-guia-*-v2.pdf; do
+            name="$(basename "$f")"
+            target="$(printf '%s' "$name" | sed -e 's/^dados-gov-pt-guia-//' -e 's/-v2\.pdf$/.pdf/')"
+            cp "$f" "assets/pdf/$target"
+          done
+
+      - name: Validar colecção, autoria e D06
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          site = json.loads(Path("content/site.json").read_text(encoding="utf-8"))
+          author = site["author"]["name"]
+          version = site["prototype"]["version"]
+
+          qa = json.loads(Path(".build/pdf/qa-summary.json").read_text(encoding="utf-8"))
+          assert len(qa) == 15, f"Esperados 15 guias, obtidos {len(qa)}"
+          bad = [x for x in qa if x["missing_items"] != 0]
+          assert not bad, f"Conteúdo em falta: {bad}"
+
+          pdfs = sorted(Path("assets/pdf").glob("*.pdf"))
+          assert len(pdfs) == 15, f"Esperados 15 PDFs públicos, obtidos {len(pdfs)}"
+          missing_author = []
+          for pdf in pdfs:
+              reader = PdfReader(str(pdf))
+              assert len(reader.pages) >= 1, f"PDF sem páginas: {pdf}"
+              assert pdf.stat().st_size > 50000, f"PDF anormalmente pequeno: {pdf}"
+              text = "\n".join((page.extract_text() or "") for page in reader.pages)
+              if author not in text or version not in text:
+                  missing_author.append(pdf.name)
+          assert not missing_author, f"Autoria em falta: {missing_author}"
+
+          generator = Path("scripts/generate_pdf_guides.py").read_text(encoding="utf-8")
+          assert "APPROVED_D06" not in generator, "D06 voltou a ter tratamento especial"
+          assert "code=='D06'" not in generator, "D06 voltou a ter ramo especial"
+          print("QA PDF: 15/15 ficheiros válidos, com autoria e sem excepção D06.")
+          PY
+
+      - name: Validar equivalência semântica dos PDFs versionados
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          versioned_dir = Path(".build/pdf-versioned")
+          generated_dir = Path("assets/pdf")
+          versioned = {p.name: p for p in versioned_dir.glob("*.pdf")}
+          generated = {p.name: p for p in generated_dir.glob("*.pdf")}
+
+          assert set(versioned) == set(generated), (
+              f"Conjunto de PDFs divergente: versionados={sorted(versioned)}, "
+              f"gerados={sorted(generated)}"
+          )
+
+          def normalize_page_text(text):
+              normalized = re.sub(r"\s+", " ", text or "").strip()
+              return re.sub(
+                  r"© dados\.gov\.pt · Protótipo(?::)?\s+'?Guias'?\s+[Vv]\d+\.\d+\.\d+(?:-rc\.\d+)?(?:\s+em desenvolvimento)?",
+                  "© dados.gov.pt · Protótipo: 'Guias' <VERSION>",
+                  normalized,
+              )
+
+          def page_texts(path):
+              reader = PdfReader(str(path))
+              return tuple(normalize_page_text(page.extract_text() or "") for page in reader.pages)
+
+          differences = []
+          for name in sorted(generated):
+              expected = page_texts(versioned[name])
+              actual = page_texts(generated[name])
+              if expected != actual:
+                  differences.append(name)
+
+          assert not differences, (
+              "Conteúdo textual/paginação divergente nos PDFs: " + ", ".join(differences)
+          )
+          print("QA PDF semântica: PDFs versionados equivalentes aos regenerados; diferenças binárias de metadata são toleradas.")
+          PY

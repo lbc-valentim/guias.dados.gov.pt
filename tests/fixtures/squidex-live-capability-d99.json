@@ -1,0 +1,23 @@
+{
+  "capturedAt": "2026-09-25T01:42:00Z",
+  "appName": "guias-dados-gov-pt-piloto",
+  "schema": "guide",
+  "id": "30f2d310-cc71-452b-a0eb-5ad727fbb147",
+  "key": "D99",
+  "status": "Draft",
+  "version": "10",
+  "updateMethod": "PATCH",
+  "updateHref": "/api/content/guias-dados-gov-pt-piloto/guide/30f2d310-cc71-452b-a0eb-5ad727fbb147",
+  "readOnlyProbe": true,
+  "liveWriteRehearsal": {
+    "initialVersion": 8,
+    "freshPatchStatus": 200,
+    "postFreshVersion": 9,
+    "stalePatchStatus": 412,
+    "staleRejected": true,
+    "rollbackStatus": 200,
+    "finalVersion": 10,
+    "finalEqual": true,
+    "finalStatus": "Draft"
+  }
+}

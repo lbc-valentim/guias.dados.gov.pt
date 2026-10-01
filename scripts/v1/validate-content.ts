@@ -1,0 +1,15 @@
+import { loadContent } from "../../src/lib/content/repository";
+import { getGuidePublicationStatus, validateGuidePublicationStatus } from "../../src/lib/content/publication-status";
+import { buildRoutes } from "../../src/lib/content/routes";
+const c=loadContent(); const routes=buildRoutes(c);
+const tasks=c.guides.reduce((n,g)=>n+g.fichas.length,0);
+if(c.guides.length!==15) throw new Error(`Esperados 15 guias; obtidos ${c.guides.length}`);
+if(tasks!==96) throw new Error(`Esperadas 96 fichas; obtidas ${tasks}`);
+if(c.themes.length!==7) throw new Error(`Esperados 7 temas; obtidos ${c.themes.length}`);
+if(routes.length!==119) throw new Error(`Esperadas 119 rotas; obtidas ${routes.length}`);
+if(new Set(routes.map(r=>r.path)).size!==routes.length) throw new Error("Rotas duplicadas");
+const publicationStatuses=validateGuidePublicationStatus(c);
+if(publicationStatuses!==3) throw new Error(`Esperados 3 estados editoriais QF01; obtidos ${publicationStatuses}`);
+for(const id of ["D06","D07","CM"]) if(!getGuidePublicationStatus(id)) throw new Error(`Estado editorial QF01 em falta: ${id}`);
+if(getGuidePublicationStatus("D11")) throw new Error("D11 não deve ser marcado como indisponível no QF01");
+console.log(`Conteúdo v1 válido: ${c.guides.length} guias; ${tasks} fichas; ${c.themes.length} temas; ${routes.length} rotas; ${publicationStatuses} estados editoriais QF01.`);
