@@ -1,0 +1,62 @@
+{
+  "locale": "pt-PT",
+  "themes": [
+    {
+      "key": "tema-piloto",
+      "slug": "Tema-piloto",
+      "order": 1,
+      "title": "Tema piloto",
+      "intro": "Conteúdo técnico sintético para validar o mapeamento Squidex."
+    }
+  ],
+  "guides": [
+    {
+      "key": "D99",
+      "code": "D99",
+      "slug": "Guia-piloto",
+      "themeKey": "tema-piloto",
+      "order": 1,
+      "title": "Guia piloto",
+      "intro": "Guia técnico sintético.",
+      "audience": "Utilizador de teste",
+      "taskKeys": ["D99-T01", "D99-T02"],
+      "relatedGuideKeys": [],
+      "resources": []
+    }
+  ],
+  "tasks": [
+    {
+      "key": "D99-T01",
+      "slug": "Primeira-tarefa-piloto",
+      "title": "Primeira tarefa piloto",
+      "intro": "Primeira tarefa técnica sintética.",
+      "roles": "Utilizador de teste",
+      "steps": [
+        { "text": "Executar o primeiro passo técnico." },
+        { "text": "Confirmar o resultado técnico." }
+      ],
+      "example": "Exemplo técnico.",
+      "tip": "Dica técnica.",
+      "table": null,
+      "media": "Sem media real no piloto.",
+      "nextType": "task",
+      "nextTaskKey": "D99-T02"
+    },
+    {
+      "key": "D99-T02",
+      "slug": "Segunda-tarefa-piloto",
+      "title": "Segunda tarefa piloto",
+      "intro": "Segunda tarefa técnica sintética.",
+      "roles": "Utilizador de teste",
+      "steps": [
+        { "text": "Concluir o percurso técnico do piloto." }
+      ],
+      "example": "Exemplo técnico final.",
+      "tip": "Dica técnica final.",
+      "table": [["Campo", "Valor"], ["piloto", "ok"]],
+      "media": "Sem media real no piloto.",
+      "nextType": "overview",
+      "nextGuideKey": "D99"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aprovar ou rejeitar uma fonte | Guias do utilizador | dados.gov.pt</title><meta name="description" content="A decisão de validação de uma fonte pendente pertence ao administrador do sistema."><link rel="canonical" href="https://timmarcelino.github.io/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/Aprovar-ou-rejeitar-uma-fonte/"><link rel="stylesheet" href="/Guias_dados.gov.pt/assets/css/base.css"><link rel="stylesheet" href="/Guias_dados.gov.pt/assets/css/portal.css"><link rel="stylesheet" href="/Guias_dados.gov.pt/assets/css/guides.css"><link rel="stylesheet" href="/Guias_dados.gov.pt/assets/css/routes.css"><script type="module" src="/Guias_dados.gov.pt/assets/js/header.js"></script><script type="module" src="/Guias_dados.gov.pt/assets/js/search.js"></script></head><body><a class="skip-link" href="#conteudo">Saltar para o conteúdo</a><header class="portal-header" aria-label="Cabeçalho do portal">
+  <div class="portal-utility-bar">
+    <div class="portal-shell portal-utility-bar__inner">
+      <a class="portal-utility-title" href="https://dados.gov.pt/pt" target="_blank" rel="noopener noreferrer">Portal nacional de dados abertos</a>
+      <div class="portal-utility-actions" aria-label="Opções de navegação geral">
+        <button class="portal-utility-action" type="button" data-header-search>
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+          <span>Pesquisar</span>
+        </button>
+        <span class="portal-utility-action portal-utility-action--static">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><circle cx="5" cy="5" r="1.6"></circle><circle cx="12" cy="5" r="1.6"></circle><circle cx="19" cy="5" r="1.6"></circle><circle cx="5" cy="12" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="19" cy="12" r="1.6"></circle><circle cx="5" cy="19" r="1.6"></circle><circle cx="12" cy="19" r="1.6"></circle><circle cx="19" cy="19" r="1.6"></circle></svg>
+          <span>Ecossistema</span><strong class="portal-arte-mark" aria-label="ARTE">arte</strong>
+        </span>
+        <a class="portal-utility-action" href="https://dados.gov.pt/pt/login" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="8" r="3.5"></circle><path d="M5.5 20c.6-4.1 3-6.1 6.5-6.1s5.9 2 6.5 6.1"></path></svg>
+          <span>Autenticar</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="portal-main-bar">
+    <div class="portal-shell portal-main-bar__inner">
+      <a class="portal-logo" href="https://dados.gov.pt/pt" target="_blank" rel="noopener noreferrer" aria-label="dados.gov.pt">
+        <img src="https://dados.gov.pt/Logos/Dados.gov_logocores.png" alt="dados.gov.pt" width="251" height="43">
+      </a>
+      <button class="portal-mobile-toggle" type="button" aria-expanded="false" aria-controls="portal-primary-nav" data-mobile-nav-toggle>
+        <span>Menu</span><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      </button>
+      <nav class="portal-primary-nav" id="portal-primary-nav" aria-label="Navegação principal do portal">
+        <a href="https://dados.gov.pt/pt/datastories" target="_blank" rel="noopener noreferrer">Data Stories</a>
+        <a href="https://dados.gov.pt/pt/datasets" target="_blank" rel="noopener noreferrer">Conjuntos de dados</a>
+        <a href="https://dados.gov.pt/pt/dataservices" target="_blank" rel="noopener noreferrer">APIs</a>
+        <a href="https://dados.gov.pt/pt/reuses" target="_blank" rel="noopener noreferrer">Reutilizações</a>
+        <a href="https://dados.gov.pt/pt/organizations" target="_blank" rel="noopener noreferrer">Organizações</a>
+        <div class="portal-nav-menu">
+          <button type="button" data-menu-button aria-expanded="false" aria-controls="menu-recursos"><span>Recursos</span><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="m7 9 5 5 5-5"></path></svg></button>
+          <div class="portal-dropdown" id="menu-recursos" hidden>
+            <ul>
+              <li><a href="https://dados.gov.pt/pt/recursos/como-usar-o-portal" target="_blank" rel="noopener noreferrer">Como usar o portal</a></li>
+              <li><a href="https://dados.gov.pt/pt/recursos/aprender" target="_blank" rel="noopener noreferrer">Aprender</a></li>
+              <li><a href="https://dados.gov.pt/pt/recursos/desenvolvimento" target="_blank" rel="noopener noreferrer">Desenvolvimento</a></li>
+              <li><a href="https://dados.gov.pt/pt/recursos/publicacoes" target="_blank" rel="noopener noreferrer">Publicações</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header><div id="dados-guides-review"><div class="dg-window"><div class="dg-search-band"><form class="dg-search" role="search" action="/Guias_dados.gov.pt/Guias-do-utilizador/"><label for="dg-query">Pesquisar nestes guias</label><input id="dg-query" name="q" type="search"><button type="submit">Pesquisar</button></form></div><div class="dg-body"><aside class="dg-sidebar" aria-label="Navegação dos guias"><label for="dg-guide">Escolher guia</label><select id="dg-guide"><option value="/Guias_dados.gov.pt/Guias-do-utilizador/">Todos os guias</option><optgroup label="Encontrar, consultar e explorar dados"><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Encontrar-consultar-e-explorar-dados/Encontrar-e-consultar-dados/">Encontrar e consultar dados</option><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Encontrar-consultar-e-explorar-dados/Explorador-de-dados/">Explorador de dados</option></optgroup><optgroup label="Publicar e gerir dados"><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Publicar-e-gerir-dados/Publicar-e-gerir-Conjuntos-de-Dados/">Publicar e gerir Conjuntos de Dados</option><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Publicar-e-gerir-dados/Recursos-de-um-Conjunto-de-Dados/">Recursos de um Conjunto de Dados</option></optgroup><optgroup label="Qualidade e modelos de dados"><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Qualidade-e-modelos-de-dados/Qualidade-e-validacao-de-dados/">Qualidade e validação de dados</option><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Qualidade-e-modelos-de-dados/Catalogo-de-Modelos/">Catálogo de Modelos</option></optgroup><optgroup label="Organizações"><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Organizacoes/Organizacoes-e-permissoes/">Organizações e permissões</option></optgroup><optgroup label="APIs, reutilizações e automatização"><option value="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/APIs-e-servicos-de-dados/">APIs e serviços de dados</option><option value="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Reutilizacoes/">Reutilizações</option><option value="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/" selected>Harvester</option></optgroup><optgroup label="Acesso, perfil e participação"><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Acesso-perfil-e-participacao/Autenticacao-e-acesso-a-conta/">Autenticação e acesso à conta</option><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Acesso-perfil-e-participacao/Perfil-e-actividade/">Perfil e actividade</option><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Acesso-perfil-e-participacao/Seguir-conteudos-e-notificacoes/">Seguir conteúdos e notificações</option><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Acesso-perfil-e-participacao/Discussoes-e-comunidade/">Discussões e comunidade</option></optgroup><optgroup label="Ajuda e contactos"><option value="/Guias_dados.gov.pt/Guias-do-utilizador/Ajuda-e-contactos/Ajuda-e-contactos/">Ajuda e contactos</option></optgroup></select><nav aria-label="Assuntos do guia"><a class="dg-nav-item" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/">Visão geral</a><a class="dg-nav-item" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/Preparar-uma-fonte-de-Harvester/">Preparar uma fonte de Harvester</a><a class="dg-nav-item" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/Consultar-e-actualizar-a-configuracao/">Consultar e actualizar a configuração</a><a class="dg-nav-item" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/Configurar-e-rever-filtros/">Configurar e rever filtros</a><a class="dg-nav-item" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/Pre-visualizar-os-resultados/">Pré-visualizar os resultados</a><a class="dg-nav-item" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/Consultar-trabalhos-e-resultados/">Consultar trabalhos e resultados</a><a class="dg-nav-item" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/Aprovar-ou-rejeitar-uma-fonte/" aria-current="page">Aprovar ou rejeitar uma fonte</a></nav><a class="dg-all" href="/Guias_dados.gov.pt/Guias-do-utilizador/">Ver todos os temas</a></aside><main id="conteudo" tabindex="-1"><nav class="dg-breadcrumb" aria-label="Breadcrumb"><ol><li><a class="" href="https://dados.gov.pt/pt">Início</a></li><li><a class="" href="https://dados.gov.pt/pt/recursos">Recursos</a></li><li><a class="" href="/Guias_dados.gov.pt/Guias-do-utilizador/">Guias do utilizador</a></li><li><a class="" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/">APIs, reutilizações e automatização</a></li><li><a class="" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/">Harvester</a></li><li><span aria-current="page">Aprovar ou rejeitar uma fonte</span></li></ol></nav><h1>Aprovar ou rejeitar uma fonte</h1><p class="dg-lead">A decisão de validação de uma fonte pendente pertence ao administrador do sistema.</p><p class="dg-role">Administrador do sistema</p><h2>Como fazer</h2><ol class="dg-steps"><li><span>Na administração do sistema, localize uma fonte com validação pendente.</span></li><li><span>Reveja a configuração e a informação disponível sobre a fonte.</span></li><li><span>Escolha Aprovar ou Rejeitar na listagem ou no detalhe, conforme a acção apresentada.</span></li><li><span>Ao rejeitar, preencha o motivo. Ao aprovar, o comentário é opcional.</span></li><li><span>Confirme a decisão e verifique o novo estado. Se ocorrer um erro, consulte a mensagem antes de repetir.</span></li></ol><div class="dg-example"><h2>Exemplo</h2><p>Um administrador rejeita uma fonte e indica que o endereço precisa de ser corrigido.</p></div><div class="dg-media"><div><div class="dg-media-label">Imagem ou vídeo previsto</div><p>Captura do percurso do Harvester com fonte e organização fictícias, sem expor dados ou credenciais reais.</p></div></div><div class="dg-tip"><strong>Dica</strong><p>A aprovação da fonte e a execução do Harvester são operações distintas. Não interprete a aprovação como confirmação de importação dos dados.</p></div><nav class="dg-bottom" aria-label="Assunto anterior e seguinte"><a class="dg-text-button" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/Consultar-trabalhos-e-resultados/">← Consultar trabalhos e resultados</a><a class="dg-primary" href="/Guias_dados.gov.pt/Guias-do-utilizador/APIs-reutilizacoes-e-automatizacao/Harvester/">Voltar à visão geral</a></nav></main></div></div></div><footer class="portal-footer" aria-label="Rodapé do portal">
+  <div class="portal-footer__inner portal-footer__navigation">
+    <h2>Mais para descobrir no portal</h2>
+    <nav class="portal-footer__columns" aria-label="Navegação do rodapé">
+      <section><h3>Dados abertos</h3><ul>
+        <li><a href="https://dados.gov.pt/areas-tematicas" target="_blank" rel="noopener noreferrer">Áreas Temáticas</a></li>
+        <li><a href="https://dados.gov.pt/roadmap" target="_blank" rel="noopener noreferrer">Roadmap</a></li>
+        <li><a href="https://dados.gov.pt/datasets/catalogo-de-dados-dos-dados-gov-pt" target="_blank" rel="noopener noreferrer">Catálogo de dados</a></li>
+        <li><a href="https://data.europa.eu/" target="_blank" rel="noopener noreferrer">Portal de dados europeu</a></li>
+      </ul></section>
+      <section><h3>Portal</h3><ul>
+        <li><a href="https://dados.gov.pt/pt/noticias" target="_blank" rel="noopener noreferrer">Notícias</a></li>
+        <li><a href="https://dados.gov.pt/recursos/como-usar-o-portal/o-que-e-dados-gov-pt" target="_blank" rel="noopener noreferrer">O que é dados.gov.pt</a></li>
+        <li><a href="https://dados.gov.pt/ajuda-e-contactos" target="_blank" rel="noopener noreferrer">Ajuda e contactos</a></li>
+        <li><a href="https://dados.gov.pt/termos-de-utilizacao" target="_blank" rel="noopener noreferrer">Termos de utilização</a></li>
+      </ul></section>
+      <section><h3>Desenvolvimento</h3><ul>
+        <li><a href="https://dados.gov.pt/recursos/desenvolvimento/referencia-api" target="_blank" rel="noopener noreferrer">Referência API</a></li>
+        <li><a href="https://github.com/amagovpt/udata-pt" target="_blank" rel="noopener noreferrer">Mecanismo de código aberto: udata</a></li>
+        <li><a href="https://github.com/amagovpt/dadosgov-fe" target="_blank" rel="noopener noreferrer">Extensão do tema udata: udata-front</a></li>
+      </ul></section>
+    </nav>
+  </div>
+  <div class="portal-footer__inner portal-footer__brands" aria-label="Entidades e financiamento">
+    <img src="https://dados.gov.pt/Logos/pt-republic-color.svg" alt="República Portuguesa">
+    <img src="https://dados.gov.pt/Logos/NextGenerationEU.svg" alt="NextGenerationEU">
+    <img data-logo="arte" src="https://dados.gov.pt/Logos/Logotipo_ARTE__Horizontal_branco_pt.svg" alt="Agência para a Reforma Tecnológica do Estado">
+  </div>
+  <div class="portal-footer__inner portal-footer__bottom">
+    <p>Portal aberto de dados públicos portugueses.</p>
+    <div class="portal-footer__related">
+      <a href="https://portugal.gov.pt/" target="_blank" rel="noopener noreferrer">República Portuguesa</a>
+      <a href="https://www.compete2020.gov.pt/" target="_blank" rel="noopener noreferrer">Compete 2020</a>
+      <a href="https://portugal2020.pt/" target="_blank" rel="noopener noreferrer">Portugal 2020</a>
+      <a href="https://eur-lex.europa.eu/legal-content/PT/LSU/?uri=CELEX:32019L1024" target="_blank" rel="noopener noreferrer">Comissão Europeia</a>
+    </div>
+    <section class="vp-author-credit" aria-label="Crédito de autoria">
+      <img class="vp-author-credit__logo" src="/Guias_dados.gov.pt/assets/brand/valentim-pinto-vp.jpg" alt="VP, marca pessoal de Valentim Pinto">
+      <p class="vp-author-credit__line vp-author-credit__line--primary">Concepção funcional e editorial: <a class="vp-author-credit__name" href="https://www.linkedin.com/in/valentimmarcelino/" target="_blank" rel="noopener noreferrer">Valentim Pinto</a></p>
+      <p class="vp-author-credit__line vp-author-credit__line--secondary">© dados.gov.pt · Protótipo Guias v0.5.0 em revisão</p>
+    </section>
+  </div>
+</footer></body></html>

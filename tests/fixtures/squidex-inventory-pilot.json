@@ -1,0 +1,30 @@
+[
+  {
+    "schema": "guide-theme",
+    "id": "cc93ca04-8206-4bcc-8a30-033b019c0d26",
+    "key": "tema-piloto",
+    "version": "1",
+    "status": "Draft"
+  },
+  {
+    "schema": "guide",
+    "id": "30f2d310-cc71-452b-a0eb-5ad727fbb147",
+    "key": "D99",
+    "version": "10",
+    "status": "Draft"
+  },
+  {
+    "schema": "guide-task",
+    "id": "2a907ea7-d592-4342-b898-040e56866182",
+    "key": "D99-T02",
+    "version": "2",
+    "status": "Draft"
+  },
+  {
+    "schema": "guide-task",
+    "id": "8c21575e-0e4e-4963-9bec-3e762a572407",
+    "key": "D99-T01",
+    "version": "1",
+    "status": "Draft"
+  }
+]

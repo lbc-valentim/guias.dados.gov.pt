@@ -438,7 +438,20 @@
       padding-inline: 8px;
     }
 
-    .portal-utility-action > span,
+    .portal-utility-action:not(.portal-utility-action--static) > span {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .portal-utility-action--static > span,
     .portal-arte-mark { display: none; }
 
     .portal-main-bar__inner { min-height: 70px; }
@@ -456,3 +469,80 @@
     .portal-footer__columns { grid-template-columns: 1fr; }
   }
 }
+
+/* AUTHOR_BRANDING_START */
+@layer portal {
+  :root { --author-branding-display: grid; }
+
+  .vp-author-credit {
+    grid-column: 1 / -1;
+    display: var(--author-branding-display);
+    grid-template-columns: 86px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 14px;
+    row-gap: 4px;
+    align-items: center;
+    margin-top: 6px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .vp-author-credit__logo {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    width: 78px;
+    height: auto;
+    display: block;
+    border-radius: 3px;
+    background: #f7f3ea;
+  }
+
+  .vp-author-credit__line {
+    grid-column: 2;
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  .vp-author-credit__line--primary {
+    grid-row: 1;
+    align-self: end;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.82rem;
+  }
+
+  .vp-author-credit__line--secondary {
+    grid-row: 2;
+    align-self: start;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.78rem;
+  }
+
+  .vp-author-credit__name {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    text-underline-offset: 3px;
+  }
+
+  .vp-author-credit__name:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .vp-author-credit__name:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 760px) {
+    .vp-author-credit {
+      grid-template-columns: 72px minmax(0, 1fr);
+      column-gap: 12px;
+    }
+    .vp-author-credit__logo { width: 64px; }
+    .vp-author-credit__line--primary { font-size: 0.8rem; }
+    .vp-author-credit__line--secondary { font-size: 0.75rem; }
+  }
+}
+/* AUTHOR_BRANDING_END */

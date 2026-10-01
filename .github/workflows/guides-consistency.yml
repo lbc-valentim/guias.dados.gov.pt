@@ -1,0 +1,18 @@
+name: Validar consistência legacy dos Guias
+
+on:
+  workflow_dispatch:
+
+# Guardrail legacy, apenas manual. A arquitectura v1 é validada por v1-ci.yml.
+# Este workflow conserva verificações da materialização HTML anterior para diagnóstico
+# durante a transição, sem bloquear nem escrever em main.
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validar fonte, rotas, pesquisa e sitemap legacy
+        run: python scripts/validate_guides_consistency.py
+      - name: Validar layout transversal legacy
+        run: python scripts/sync_shared_layout.py --check

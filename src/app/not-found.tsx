@@ -1,0 +1,1 @@
+export default function NotFound(){return <><h1 className="text-3xl-bold mb-16">Página não encontrada</h1><p>Verifique o endereço ou volte aos Guias do utilizador.</p></>}

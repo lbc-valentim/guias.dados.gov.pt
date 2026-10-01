@@ -1,0 +1,99 @@
+{
+  "data": {
+    "queryGuideThemeContentsWithTotal": {
+      "items": [
+        {
+          "id": "cc93ca04-8206-4bcc-8a30-033b019c0d26",
+          "status": "DRAFT",
+          "flatData": {
+            "key": "tema-piloto",
+            "slug": "Tema-piloto",
+            "order": 1,
+            "title": "Tema piloto",
+            "intro": "Conteúdo técnico sintético para validar o mapeamento Squidex."
+          }
+        }
+      ]
+    },
+    "queryGuideContentsWithTotal": {
+      "items": [
+        {
+          "id": "30f2d310-cc71-452b-a0eb-5ad727fbb147",
+          "status": "DRAFT",
+          "flatData": {
+            "key": "D99",
+            "code": "D99",
+            "slug": "Guia-piloto",
+            "theme": [
+              { "id": "cc93ca04-8206-4bcc-8a30-033b019c0d26" }
+            ],
+            "order": 1,
+            "title": "Guia piloto",
+            "intro": "Guia técnico sintético.",
+            "audience": "Utilizador de teste",
+            "tasks": [
+              { "id": "8c21575e-0e4e-4963-9bec-3e762a572407" },
+              { "id": "2a907ea7-d592-4342-b898-040e56866182" }
+            ],
+            "relatedGuides": [],
+            "resources": []
+          }
+        }
+      ]
+    },
+    "queryGuideTaskContentsWithTotal": {
+      "items": [
+        {
+          "id": "8c21575e-0e4e-4963-9bec-3e762a572407",
+          "status": "DRAFT",
+          "flatData": {
+            "key": "D99-T01",
+            "slug": "Primeira-tarefa-piloto",
+            "title": "Primeira tarefa piloto",
+            "intro": "Primeira tarefa técnica sintética.",
+            "roles": "Utilizador de teste",
+            "steps": [
+              { "text": "Executar o primeiro passo técnico." },
+              { "text": "Confirmar o resultado técnico." }
+            ],
+            "example": "Exemplo técnico.",
+            "tip": "Dica técnica.",
+            "table": null,
+            "media": "Sem media real no piloto.",
+            "nextType": "task",
+            "nextTask": [
+              { "id": "2a907ea7-d592-4342-b898-040e56866182" }
+            ],
+            "nextGuide": null
+          }
+        },
+        {
+          "id": "2a907ea7-d592-4342-b898-040e56866182",
+          "status": "DRAFT",
+          "flatData": {
+            "key": "D99-T02",
+            "slug": "Segunda-tarefa-piloto",
+            "title": "Segunda tarefa piloto",
+            "intro": "Segunda tarefa técnica sintética.",
+            "roles": "Utilizador de teste",
+            "steps": [
+              { "text": "Concluir o percurso técnico do piloto." }
+            ],
+            "example": "Exemplo técnico final.",
+            "tip": "Dica técnica final.",
+            "table": [
+              ["Campo", "Valor"],
+              ["piloto", "ok"]
+            ],
+            "media": "Sem media real no piloto.",
+            "nextType": "overview",
+            "nextTask": null,
+            "nextGuide": [
+              { "id": "30f2d310-cc71-452b-a0eb-5ad727fbb147" }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
